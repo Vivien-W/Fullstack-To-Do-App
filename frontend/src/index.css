@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mahagoni: #38040e;
+  --font-display: "Helvetica", sans-serif;
+}
