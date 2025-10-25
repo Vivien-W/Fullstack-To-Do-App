@@ -13,6 +13,6 @@
       "@/*": ["*"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "setupTests.ts", "setupTests.ts"],
   "exclude": ["node_modules", "dist"]
 }
