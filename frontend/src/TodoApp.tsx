@@ -149,11 +149,12 @@ export default function TodoApp({
     <div className="min-h-screen bg-mahagoni flex justify-center items-center p-4">
       <div className="bg-gray-50 rounded-2xl shadow-xl w-full max-w-lg p-8">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold font-display text-stone-700 mb-4">
+          <h1 className="text-3xl font-bold font-displaytext-4xl text-transparent bg-clip-text bg-linear-to-r from-orange-500 via-red-500 to-red-700 mb-4">
             FULLSTACK TODO APP
           </h1>
           <button
             onClick={handleLogout}
+            aria-label="Logout"
             className="text-red-500 hover:text-red-700 cursor-pointer mt-4"
           >
             <IoLogOutOutline size={24} />
