@@ -22,7 +22,7 @@ describe("TodoApp Component", () => {
         setLoggedOut={jest.fn()}
       />
     );
-    expect(screen.getByText(/FULLSTACK TODO APP/i)).toBeInTheDocument();
+    expect(screen.getByText(/Deine To-Do-Liste/i)).toBeInTheDocument();
   });
 
   // ✅ Test 2: Neues To-Do hinzufügen funktioniert

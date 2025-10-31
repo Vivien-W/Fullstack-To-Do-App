@@ -146,16 +146,16 @@ export default function TodoApp({
   };
 
   return (
-    <div className="min-h-screen bg-mahagoni flex justify-center items-center p-4">
-      <div className="bg-gray-50 rounded-2xl shadow-xl w-full max-w-lg p-8">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold font-displaytext-4xl text-transparent bg-clip-text bg-linear-to-r from-orange-500 via-red-500 to-red-700 mb-4">
-            FULLSTACK TODO APP
+    <div className="min-h-screen bg-linear-to-br from-bg via-card to-olive flex justify-center items-center p-6">
+      <div className="bg-card/90 backdrop-blur-sm rounded-[var(--radius-card)] shadow-2xl w-full max-w-lg p-8 border border-olive">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-display font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-dark mb-4">
+            Deine To-Do-Liste
           </h1>
           <button
             onClick={handleLogout}
             aria-label="Logout"
-            className="text-red-500 hover:text-red-700 cursor-pointer mt-4"
+            className="text-accent hover:text-accent-dark transition-transform hover:scale-110"
           >
             <IoLogOutOutline size={24} />
           </button>
@@ -169,10 +169,10 @@ export default function TodoApp({
 
         <form
           onSubmit={onSubmitForm}
-          className="flex items-center gap-2 shadow-sm border p-2 rounded-lg mb-6"
+          className="flex items-center gap-2 border border-olive/40 bg-white/70 shadow-sm p-2 rounded-[var(--radius-button)] mb-6"
         >
           <input
-            className="flex-1 outline-none px-3 py-2 text-gray-700 placeholder-gray-400"
+            className="flex-1 bg-transparent outline-none px-3 py-2 text-text placeholder-olive/70"
             type="text"
             value={description}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -181,7 +181,7 @@ export default function TodoApp({
             placeholder="What needs to be done?"
             required
           />
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium cursor-pointer">
+          <button className="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-[var(--radius-button)] transition-all font-medium shadow cursor-pointer">
             Add Task
           </button>
         </form>
