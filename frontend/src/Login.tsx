@@ -44,13 +44,13 @@ export default function Login({ setToken }: LoginProps) {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <LeafBackground />
-      <div className="relative z-10 bg-card/90 backdrop-blur-sm border border-olive/40 shadow-2xl rounded-[var(--radius-card)] w-full max-w-sm p-8">
-        <h1 className="text-3xl font-display font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-dark">
+      <div className="relative z-10 bg-card/90 backdrop-blur-sm border border-olive/40 shadow-2xl rounded-(--radius-card)] w-full max-w-sm p-8">
+        <h1 className="text-3xl font-display font-extrabold text-center mb-6 text-transparent bg-clip-text bg-linear-to-r from-accent to-accent-dark">
           {mode === "login" ? "Login" : "Registrieren"}
         </h1>
 
         {message && (
-          <p className="mb-4 text-center text-[var(--color-text)] bg-white/50 border border-olive/30 rounded-lg py-2">
+          <p className="mb-4 text-center text-text bg-white/50 border border-olive/30 rounded-lg py-2">
             {message}
           </p>
         )}
@@ -59,7 +59,7 @@ export default function Login({ setToken }: LoginProps) {
           <input
             type="text"
             placeholder="Username"
-            className="px-4 py-3 rounded-[var(--radius-button)] border border-olive/40 bg-white/70 text-[var(--color-text)] placeholder-olive/70 shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+            className="px-4 py-3 rounded-(--radius-button)] border border-olive/40 bg-white/70 text-text placeholder-olive/70 shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
             value={username}
             onChange={handleUsernameChange}
             required
@@ -67,17 +67,17 @@ export default function Login({ setToken }: LoginProps) {
           <input
             type="password"
             placeholder="Passwort"
-            className="px-4 py-3 rounded-[var(--radius-button)] border border-olive/40 bg-white/70 text-[var(--color-text)] placeholder-olive/70 shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
+            className="px-4 py-3 rounded-(--radius-button)] border border-olive/40 bg-white/70 text-text placeholder-olive/70 shadow-sm focus:outline-none focus:ring-2 focus:ring-accent/40"
             value={password}
             onChange={handlePasswordChange}
             required
           />
-          <button className="bg-accent hover:bg-accent-dark text-white py-3 rounded-[var(--radius-button)] font-medium transition-all shadow-md hover:shadow-lg active:scale-[0.98] cursor-pointer">
+          <button className="bg-accent hover:bg-accent-dark text-white py-3 rounded-(--radius-button)] font-medium transition-all shadow-md hover:shadow-lg active:scale-[0.98] cursor-pointer">
             {mode === "login" ? "Einloggen" : "Registrieren"}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-[var(--color-text)]/80">
+        <p className="mt-6 text-center text-sm text-text/80">
           {mode === "login" ? (
             <>
               Noch keinen Account?{" "}
