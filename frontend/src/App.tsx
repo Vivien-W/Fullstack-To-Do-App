@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Login from "./Login";
 import TodoApp from "./TodoApp";
+import LeafBackground from "./LeafBackground"; // <-- hier importieren
 
 function App() {
-  // token kann string oder null sein
   const [token, setToken] = useState<string | null>(
     localStorage.getItem("token")
   );
@@ -18,13 +18,23 @@ function App() {
     );
   }
 
-  if (!token) {
-    // setToken ist eine Funktion, die string | null erwartet
-    return <Login setToken={setToken} />;
-  }
-
   return (
-    <TodoApp token={token} setToken={setToken} setLoggedOut={setLoggedOut} />
+    <div className="relative min-h-screen overflow-hidden">
+      {/* 🍂 Hintergrund läuft IMMER, unabhängig von App-State */}
+      <LeafBackground />
+
+      <main className="relative z-10 flex items-center justify-center min-h-screen">
+        {!token ? (
+          <Login setToken={setToken} />
+        ) : (
+          <TodoApp
+            token={token}
+            setToken={setToken}
+            setLoggedOut={setLoggedOut}
+          />
+        )}
+      </main>
+    </div>
   );
 }
 

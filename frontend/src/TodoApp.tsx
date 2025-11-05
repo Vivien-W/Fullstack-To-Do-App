@@ -146,16 +146,16 @@ export default function TodoApp({
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-bg via-card to-olive flex justify-center items-center p-6">
-      <div className="bg-card/90 backdrop-blur-sm rounded-[var(--radius-card)] shadow-2xl w-full max-w-lg p-8 border border-olive">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="bg-card/90 backdrop-blur-sm rounded-(--radius-card)] shadow-2xl w-full max-w-lg p-8 border border-olive">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-display font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-dark mb-4">
-            Deine To-Do-Liste
+          <h1 className="text-3xl font-display font-extrabold bg-clip-text text-transparent bg-linear-to-r from-accent to-accent-dark mb-4">
+            To-Do-Liste
           </h1>
           <button
             onClick={handleLogout}
             aria-label="Logout"
-            className="text-accent hover:text-accent-dark transition-transform hover:scale-110"
+            className="text-accent hover:text-accent-dark transition-transform hover:scale-110 cursor-pointer"
           >
             <IoLogOutOutline size={24} />
           </button>
@@ -169,7 +169,7 @@ export default function TodoApp({
 
         <form
           onSubmit={onSubmitForm}
-          className="flex items-center gap-2 border border-olive/40 bg-white/70 shadow-sm p-2 rounded-[var(--radius-button)] mb-6"
+          className="flex items-center gap-2 border border-olive/40 bg-white/70 shadow-sm p-2 rounded-(--radius-button)] mb-6"
         >
           <input
             className="flex-1 bg-transparent outline-none px-3 py-2 text-text placeholder-olive/70"
@@ -181,7 +181,7 @@ export default function TodoApp({
             placeholder="What needs to be done?"
             required
           />
-          <button className="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-[var(--radius-button)] transition-all font-medium shadow cursor-pointer">
+          <button className="bg-accent hover:bg-accent-dark text-white px-4 py-2 rounded-(--radius-button)] transition-all font-medium shadow cursor-pointer">
             Add Task
           </button>
         </form>

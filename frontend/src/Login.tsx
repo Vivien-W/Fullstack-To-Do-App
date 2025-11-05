@@ -1,6 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import axios from "axios";
-import LeafBackground from "./LeafBackground";
 
 // Props-Typ für setToken
 interface LoginProps {
@@ -43,8 +42,7 @@ export default function Login({ setToken }: LoginProps) {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <LeafBackground />
-      <div className="relative z-10 bg-card/90 backdrop-blur-sm border border-olive/40 shadow-2xl rounded-(--radius-card)] w-full max-w-sm p-8">
+      <div className="bg-card/90 backdrop-blur-sm rounded-(--radius-card)] shadow-2xl w-full max-w-lg p-12 border border-olive">
         <h1 className="text-3xl font-display font-extrabold text-center mb-6 text-transparent bg-clip-text bg-linear-to-r from-accent to-accent-dark">
           {mode === "login" ? "Login" : "Registrieren"}
         </h1>
