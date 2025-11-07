@@ -149,9 +149,16 @@ export default function TodoApp({
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <div className="bg-card/90 backdrop-blur-sm rounded-(--radius-card)] shadow-2xl w-full max-w-lg p-8 border border-olive">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-display font-extrabold bg-clip-text text-transparent bg-linear-to-r from-accent to-accent-dark mb-4">
-            To-Do-Liste
-          </h1>
+          <div className="flex items-center gap-3">
+            <img
+              src="/Logo.jpg"
+              alt="LeafList Logo"
+              className="h-8 w-8 rounded-full shadow-sm"
+            />
+            <h1 className="text-2xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-dark">
+              LeafList
+            </h1>
+          </div>
           <button
             onClick={handleLogout}
             aria-label="Logout"

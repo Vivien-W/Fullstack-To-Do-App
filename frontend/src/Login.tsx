@@ -41,7 +41,16 @@ export default function Login({ setToken }: LoginProps) {
     setPassword(e.target.value);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Logo + Subtitle */}
+      <div className="flex flex-col items-center mb-6">
+        <img src="/Logo.jpg" alt="LeafList Logo" className="h-14 w-14" />
+
+        <p className="text-s font-display text-olive/70 tracking-wide mt-2">
+          „Schön, dass du wieder da bist.“
+        </p>
+      </div>
+
       <div className="bg-card/90 backdrop-blur-sm rounded-(--radius-card)] shadow-2xl w-full max-w-lg p-12 border border-olive">
         <h1 className="text-3xl font-display font-extrabold text-center mb-6 text-transparent bg-clip-text bg-linear-to-r from-accent to-accent-dark">
           {mode === "login" ? "Login" : "Registrieren"}
@@ -101,6 +110,30 @@ export default function Login({ setToken }: LoginProps) {
           )}
         </p>
       </div>
+      <footer className="absolute bottom-4 w-full flex justify-center gap-6 text-sm text-olive/80">
+        <a href="/impressum" className="hover:text-accent transition-colors">
+          Impressum
+        </a>
+        <a href="/faq" className="hover:text-accent transition-colors">
+          FAQ
+        </a>
+        <a
+          href="https://facebook.com/deinFacebookName"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-accent transition-colors"
+        >
+          Facebook
+        </a>
+        <a
+          href="https://instagram.com/in/deinProfil"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-accent transition-colors"
+        >
+          Instagram
+        </a>
+      </footer>
     </div>
   );
 }
