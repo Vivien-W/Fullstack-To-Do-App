@@ -155,7 +155,7 @@ export default function TodoApp({
               alt="LeafList Logo"
               className="h-8 w-8 rounded-full shadow-sm"
             />
-            <h1 className="text-2xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-accent to-accent-dark">
+            <h1 className="text-2xl font-display font-bold bg-clip-text text-transparent bg-linear-to-r from-accent to-accent-dark">
               LeafList
             </h1>
           </div>
