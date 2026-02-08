@@ -11,9 +11,9 @@ const app: Application = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: true, // erlaubt Requests von allen Origins
     credentials: true,
-  })
+  }),
 );
 
 app.use(express.json());
@@ -27,8 +27,8 @@ if (process.env.NODE_ENV !== "test") {
   const PORT: number = Number(process.env.PORT) || 5000;
   app.listen(PORT, () =>
     console.log(
-      `🚀 Server läuft im ${process.env.NODE_ENV} Modus auf Port ${PORT}`
-    )
+      `🚀 Server läuft im ${process.env.NODE_ENV} Modus auf Port ${PORT}`,
+    ),
   );
 }
 
