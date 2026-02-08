@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.js";
 dotenv.config();
 const app = express();
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: true, // erlaubt Requests von allen Origins
     credentials: true,
 }));
 app.use(express.json());
