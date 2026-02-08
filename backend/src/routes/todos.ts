@@ -20,7 +20,7 @@ router.get("/", authorize, async (req: AuthenticatedRequest, res: Response) => {
     const userId = req.user!.user_id;
     const result = await pool.query(
       "SELECT * FROM todo WHERE user_id=$1 ORDER BY todo_id ASC",
-      [userId]
+      [userId],
     );
     res.status(200).json(result.rows);
   } catch (err: any) {
@@ -43,7 +43,7 @@ router.post(
 
       const result = await pool.query(
         "INSERT INTO todo (description, completed, user_id) VALUES ($1, false, $2) RETURNING *",
-        [description, req.user!.user_id]
+        [description, req.user!.user_id],
       );
 
       res.status(201).json(result.rows[0]);
@@ -51,7 +51,7 @@ router.post(
       console.error("❌ Fehler in POST /todos:", err);
       res.status(500).json({ error: err.message });
     }
-  }
+  },
 );
 
 // PUT /todos/:id → Todo aktualisieren
@@ -60,7 +60,8 @@ router.put(
   authorize,
   async (req: AuthenticatedRequest, res: Response) => {
     try {
-      const id = parseInt(req.params.id);
+      const rawId = req.params.id;
+      const id = parseInt(Array.isArray(rawId) ? rawId[0] : rawId);
       const { description, completed } = req.body as TodoBody;
 
       if (description === undefined && completed === undefined) {
@@ -75,7 +76,7 @@ router.put(
            completed = COALESCE($2, completed)
        WHERE todo_id = $3 AND user_id = $4
        RETURNING *`,
-        [description, completed, id, req.user!.user_id]
+        [description, completed, id, req.user!.user_id],
       );
 
       if (result.rows.length === 0) {
@@ -89,7 +90,7 @@ router.put(
       console.error("❌ Fehler in PUT /todos/:id:", err);
       res.status(500).json({ error: err.message });
     }
-  }
+  },
 );
 
 // DELETE /todos/:id → Todo löschen
@@ -98,11 +99,12 @@ router.delete(
   authorize,
   async (req: AuthenticatedRequest, res: Response) => {
     try {
-      const id = parseInt(req.params.id);
+      const rawId = req.params.id;
+      const id = parseInt(Array.isArray(rawId) ? rawId[0] : rawId);
 
       const result = await pool.query(
         "DELETE FROM todo WHERE todo_id=$1 AND user_id=$2 RETURNING *",
-        [id, req.user!.user_id]
+        [id, req.user!.user_id],
       );
 
       if (result.rows.length === 0) {
@@ -116,7 +118,7 @@ router.delete(
       console.error("❌ Fehler in DELETE /todos/:id:", err);
       res.status(500).json({ error: err.message });
     }
-  }
+  },
 );
 
 export default router;
