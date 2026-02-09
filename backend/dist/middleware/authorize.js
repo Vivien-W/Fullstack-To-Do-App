@@ -1,12 +1,6 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = authorize;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+import jwt from "jsonwebtoken";
 const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
-function authorize(req, res, next) {
+export default function authorize(req, res, next) {
     // ✅ Testmodus überspringt Auth
     if (process.env.NODE_ENV === "test") {
         req.user = { user_id: 1 };
@@ -19,7 +13,7 @@ function authorize(req, res, next) {
     if (!token)
         return res.status(401).json({ error: "Malformed token" });
     try {
-        const decoded = jsonwebtoken_1.default.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
         req.user = decoded;
         next();
     }

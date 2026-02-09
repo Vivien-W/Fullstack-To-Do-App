@@ -17,7 +17,10 @@ export default function Login({ setToken }: LoginProps) {
     setMessage("");
 
     try {
-      const url = `leaflist-to-do-app-production.up.railway.app/auth/${mode}`;
+      const API_BASE = import.meta.env.VITE_API_BASE;
+
+      const url = `${API_BASE}/auth/${mode}`;
+
       const res = await axios.post(url, { username, password });
 
       if (mode === "login") {

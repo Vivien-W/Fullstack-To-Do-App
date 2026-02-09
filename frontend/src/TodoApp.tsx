@@ -30,7 +30,7 @@ export default function TodoApp({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const API_BASE = "leaflist-to-do-app-production.up.railway.app";
+  const API_BASE = import.meta.env.VITE_API_BASE;
   const config = { headers: { Authorization: `Bearer ${token}` } };
 
   const handleLogout = () => {

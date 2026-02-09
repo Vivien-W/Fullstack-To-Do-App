@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-esm src/index.ts",
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "node dist/index.js",
     "test": "npx cross-env NODE_ENV=test jest --runInBand"
   },
