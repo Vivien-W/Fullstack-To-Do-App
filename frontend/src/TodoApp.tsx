@@ -30,7 +30,7 @@ export default function TodoApp({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const API_BASE = "http://localhost:5000";
+  const API_BASE = "leaflist-to-do-app-production.up.railway.app";
   const config = { headers: { Authorization: `Bearer ${token}` } };
 
   const handleLogout = () => {
@@ -66,7 +66,7 @@ export default function TodoApp({
       const res = await axios.post<Todo>(
         `${API_BASE}/todos`,
         { description: description.trim() },
-        config
+        config,
       );
       setTodos([...todos, res.data]);
       setDescription("");
@@ -92,13 +92,13 @@ export default function TodoApp({
       await axios.put(
         `${API_BASE}/todos/${id}`,
         { description: trimmedText },
-        config
+        config,
       );
 
       setTodos(
         todos.map((todo) =>
-          todo.todo_id === id ? { ...todo, description: trimmedText } : todo
-        )
+          todo.todo_id === id ? { ...todo, description: trimmedText } : todo,
+        ),
       );
       setEditingTodo(null);
       setEditedText("");
@@ -131,13 +131,13 @@ export default function TodoApp({
           description: todo.description,
           completed: !todo.completed,
         },
-        config
+        config,
       );
 
       setTodos(
         todos.map((t) =>
-          t.todo_id === id ? { ...t, completed: !t.completed } : t
-        )
+          t.todo_id === id ? { ...t, completed: !t.completed } : t,
+        ),
       );
     } catch (err: any) {
       console.error(err.message);

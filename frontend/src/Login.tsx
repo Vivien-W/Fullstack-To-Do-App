@@ -17,7 +17,7 @@ export default function Login({ setToken }: LoginProps) {
     setMessage("");
 
     try {
-      const url = `http://localhost:5000/auth/${mode}`;
+      const url = `leaflist-to-do-app-production.up.railway.app/auth/${mode}`;
       const res = await axios.post(url, { username, password });
 
       if (mode === "login") {
@@ -26,7 +26,7 @@ export default function Login({ setToken }: LoginProps) {
         setMessage("✅ Login erfolgreich!");
       } else {
         setMessage(
-          "✅ Registrierung erfolgreich! Jetzt kannst du dich einloggen."
+          "✅ Registrierung erfolgreich! Jetzt kannst du dich einloggen.",
         );
         setMode("login");
       }
