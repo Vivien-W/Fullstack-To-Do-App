@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Login from "./Login";
 import TodoApp from "./TodoApp";
-import LeafBackground from "./LeafBackground"; // <-- hier importieren
+import LeafBackground from "./LeafBackground";
 
 function App() {
   const [token, setToken] = useState<string | null>(
-    localStorage.getItem("token")
+    localStorage.getItem("token"),
   );
   const [loggedOut, setLoggedOut] = useState(false);
 
