@@ -50,7 +50,7 @@ export default function Login({ setToken }: LoginProps) {
         <img src="/Logo.jpg" alt="LeafList Logo" className="h-14 w-14" />
 
         <p className="text-s font-display text-olive/70 tracking-wide mt-2">
-          „Schön, dass du wieder da bist.“
+          „Schön, dass du wieder hier bist.“
         </p>
       </div>
 

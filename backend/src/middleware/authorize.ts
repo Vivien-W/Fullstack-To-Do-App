@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env.JWT_SECRET || "fallback_secret";
 
-// 🔹 Typ für das JWT Payload (wie dein Token aussieht)
+// 🔹 Typ für das JWT Payload (wie der Token aussieht)
 interface JwtPayload {
   user_id: number;
   iat?: number;
@@ -22,7 +22,7 @@ declare global {
 export default function authorize(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): Response | void {
   // ✅ Testmodus überspringt Auth
   if (process.env.NODE_ENV === "test") {
