@@ -40,7 +40,7 @@ router.post(
       // prüfen, ob Benutzername schon existiert
       const existing = await pool.query<User>(
         "SELECT * FROM users WHERE username=$1",
-        [username]
+        [username],
       );
 
       if (existing.rows.length > 0) {
@@ -53,18 +53,18 @@ router.post(
       // Benutzer einfügen
       const result = await pool.query<User>(
         "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING user_id, username, password",
-        [username, hashed]
+        [username, hashed],
       );
 
       res.status(201).json({
-        user_id: result.rows[0].user_id,
-        username: result.rows[0].username,
+        user_id: result.rows[0]!.user_id,
+        username: result.rows[0]!.username,
       });
     } catch (err: any) {
       console.error("❌ Fehler bei /register:", err.message);
       res.status(500).json({ error: err.message });
     }
-  }
+  },
 );
 
 // Login
@@ -82,14 +82,14 @@ router.post(
 
       const userResult = await pool.query<User>(
         "SELECT * FROM users WHERE username=$1",
-        [username]
+        [username],
       );
 
       if (userResult.rows.length === 0) {
         return res.status(400).json({ error: "User not found" });
       }
 
-      const user = userResult.rows[0];
+      const user = userResult.rows[0]!;
       const valid = await bcrypt.compare(password, user.password);
 
       if (!valid) {
@@ -97,11 +97,11 @@ router.post(
       }
 
       const token = jwt.sign(
-        { user_id: user.user_id } as JWTPayload,
+        { user_id: user!.user_id } as JWTPayload,
         JWT_SECRET,
         {
           expiresIn: "1h",
-        }
+        },
       );
 
       res.status(200).json({ token });
@@ -109,7 +109,7 @@ router.post(
       console.error("❌ Fehler bei /login:", err.message);
       res.status(500).json({ error: err.message });
     }
-  }
+  },
 );
 
 export default router;

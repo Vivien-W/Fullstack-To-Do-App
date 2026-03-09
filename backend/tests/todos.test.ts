@@ -12,7 +12,7 @@ beforeAll(async () => {
     `INSERT INTO users (user_id, username, password)
      VALUES ($1, $2, $3)
      ON CONFLICT (user_id) DO NOTHING`,
-    [1, "testuser", hashedPassword]
+    [1, "testuser", hashedPassword],
   );
 });
 
@@ -51,7 +51,7 @@ describe("Todos API (Test DB)", () => {
     }[] = res.body;
 
     expect(todos.length).toBe(1);
-    expect(todos[0].description).toBe("Test todo");
+    expect(todos[0]!.description).toBe("Test todo");
   });
 
   test("should update a todo (PUT /todos/:id)", async () => {

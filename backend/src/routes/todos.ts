@@ -46,7 +46,8 @@ router.post(
         [description, req.user!.user_id],
       );
 
-      res.status(201).json(result.rows[0]);
+      // Non-null Assertion für TS
+      res.status(201).json(result.rows[0]!);
     } catch (err: any) {
       console.error("❌ Fehler in POST /todos:", err);
       res.status(500).json({ error: err.message });
@@ -61,7 +62,15 @@ router.put(
   async (req: AuthenticatedRequest, res: Response) => {
     try {
       const rawId = req.params.id;
-      const id = parseInt(Array.isArray(rawId) ? rawId[0] : rawId);
+
+      // TS-safe Check
+      if (!rawId || (Array.isArray(rawId) && !rawId[0])) {
+        return res.status(400).json({ error: "ID fehlt" });
+      }
+
+      const idStr = Array.isArray(rawId) ? rawId[0]! : rawId!;
+      const id = parseInt(idStr);
+
       const { description, completed } = req.body as TodoBody;
 
       if (description === undefined && completed === undefined) {
@@ -72,10 +81,10 @@ router.put(
 
       const result = await pool.query(
         `UPDATE todo
-       SET description = COALESCE($1, description),
-           completed = COALESCE($2, completed)
-       WHERE todo_id = $3 AND user_id = $4
-       RETURNING *`,
+         SET description = COALESCE($1, description),
+             completed = COALESCE($2, completed)
+         WHERE todo_id = $3 AND user_id = $4
+         RETURNING *`,
         [description, completed, id, req.user!.user_id],
       );
 
@@ -85,7 +94,7 @@ router.put(
           .json({ error: "Todo not found or unauthorized" });
       }
 
-      res.status(200).json(result.rows[0]);
+      res.status(200).json(result.rows[0]!);
     } catch (err: any) {
       console.error("❌ Fehler in PUT /todos/:id:", err);
       res.status(500).json({ error: err.message });
@@ -100,7 +109,14 @@ router.delete(
   async (req: AuthenticatedRequest, res: Response) => {
     try {
       const rawId = req.params.id;
-      const id = parseInt(Array.isArray(rawId) ? rawId[0] : rawId);
+
+      // TS-safe Check
+      if (!rawId || (Array.isArray(rawId) && !rawId[0])) {
+        return res.status(400).json({ error: "ID fehlt" });
+      }
+
+      const idStr = Array.isArray(rawId) ? rawId[0]! : rawId!;
+      const id = parseInt(idStr);
 
       const result = await pool.query(
         "DELETE FROM todo WHERE todo_id=$1 AND user_id=$2 RETURNING *",
