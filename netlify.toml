@@ -3,7 +3,7 @@ command = "npm install && npm run build --prefix frontend"
 publish = "frontend/dist"
 
 [functions]
-directory = "netlify/functions"
+directory = "frontend/netlify/functions"
 
 [[redirects]]
 from = "/api/*"

@@ -22,5 +22,5 @@
 
     "esModuleInterop": true
   },
-  "include": ["backend", "netlify/functions"]
+  "include": ["backend", "frontend/netlify/functions"]
 }
