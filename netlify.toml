@@ -1,12 +1,11 @@
 [build]
-  command = "npm run build --prefix frontend"
-  publish = "frontend/dist"
+command = "npm run build --prefix frontend"
+publish = "frontend/dist"
 
 [functions]
-  directory = "netlify/functions"
-  node_bundle = true
+directory = "netlify/functions"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/api/:splat"
-  status = 200
+from = "/api/*"
+to = "/.netlify/functions/api/:splat"
+status = 200
