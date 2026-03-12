@@ -1,17 +1,12 @@
 [build]
-  # Der Befehl baut das Frontend aus dem Root heraus
   command = "npm run build --prefix frontend"
-  # Hier liegen die fertigen Frontend-Dateien
   publish = "frontend/dist"
 
 [functions]
-  # Wo deine API-Handler liegen
   directory = "netlify/functions"
-  # EXTREM WICHTIG für TypeScript-Imports aus dem Backend
   node_bundle = true
 
 [[redirects]]
-  # Damit dein Frontend einfach /api/... aufrufen kann
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
