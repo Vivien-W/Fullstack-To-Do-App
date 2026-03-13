@@ -34,7 +34,26 @@ export default function Login({ setToken }: LoginProps) {
         setMode("login");
       }
     } catch (err: any) {
-      setMessage("❌ Fehler: " + (err.response?.data?.error || err.message));
+      console.error(err);
+
+      let message = "Something went wrong";
+
+      if (err.response?.data) {
+        if (typeof err.response.data === "string") {
+          message = err.response.data;
+        } else if (err.response.data.error) {
+          message =
+            typeof err.response.data.error === "string"
+              ? err.response.data.error
+              : JSON.stringify(err.response.data.error);
+        } else if (err.response.data.message) {
+          message = err.response.data.message;
+        }
+      } else if (err.message) {
+        message = err.message;
+      }
+
+      setMessage("❌ " + message);
     }
   };
 
