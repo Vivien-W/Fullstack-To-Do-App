@@ -61,8 +61,8 @@ router.post(
         username: result.rows[0]!.username,
       });
     } catch (err: any) {
-      console.error("❌ Fehler bei /register:", err.message);
-      res.status(500).json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
     }
   },
 );
@@ -106,8 +106,8 @@ router.post(
 
       res.status(200).json({ token });
     } catch (err: any) {
-      console.error("❌ Fehler bei /login:", err.message);
-      res.status(500).json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
     }
   },
 );

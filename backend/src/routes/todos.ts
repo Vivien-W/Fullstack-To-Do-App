@@ -24,8 +24,8 @@ router.get("/", authorize, async (req: AuthenticatedRequest, res: Response) => {
     );
     res.status(200).json(result.rows);
   } catch (err: any) {
-    console.error("❌ Fehler in GET /todos:", err);
-    res.status(500).json({ error: err.message });
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -49,8 +49,8 @@ router.post(
       // Non-null Assertion für TS
       res.status(201).json(result.rows[0]!);
     } catch (err: any) {
-      console.error("❌ Fehler in POST /todos:", err);
-      res.status(500).json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
     }
   },
 );
@@ -96,8 +96,8 @@ router.put(
 
       res.status(200).json(result.rows[0]!);
     } catch (err: any) {
-      console.error("❌ Fehler in PUT /todos/:id:", err);
-      res.status(500).json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
     }
   },
 );
@@ -131,8 +131,8 @@ router.delete(
 
       res.status(200).json({ message: "Todo deleted" });
     } catch (err: any) {
-      console.error("❌ Fehler in DELETE /todos/:id:", err);
-      res.status(500).json({ error: err.message });
+      console.error(err);
+      res.status(500).json({ error: "Internal server error" });
     }
   },
 );
