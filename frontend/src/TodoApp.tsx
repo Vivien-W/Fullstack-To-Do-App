@@ -195,7 +195,7 @@ export default function TodoApp({
 
         <div>
           {loading ? (
-            <p className="text-gray-600">Loading tasks...</p>
+            <p className="text-gray-600">Loading todos...</p>
           ) : todos.length === 0 ? (
             <p className="text-gray-600">No tasks available. Add a new task!</p>
           ) : (
